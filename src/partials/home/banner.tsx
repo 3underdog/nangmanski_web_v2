@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
 
-import ArrowLink from '@/components/links/ArrowLink';
-import ButtonLink from '@/components/links/ButtonLink';
-
 import Banner1 from '~/images/banner1.png';
 
 function HomeBanner() {
@@ -20,7 +17,7 @@ function HomeBanner() {
               22시즌도 낭만스키와 함께해요
             </div>
             <div className='pt-1 pl-4 text-sm text-gray-50'>
-              이번 시즌은 시범운영됩니다.
+              모든 스키장의 실시간 정보를 제공합니다.
             </div>
           </div>
 

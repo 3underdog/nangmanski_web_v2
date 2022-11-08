@@ -1,26 +1,15 @@
+import axios from 'axios';
+import { GetServerSideProps } from 'next';
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-import ResortFilteringTabs from '@/partials/home/tabs';
-import { GetServerSideProps } from 'next';
-import { ApiUrl, apiUrl } from '@/constant/env';
-import axios from 'axios';
-import ResortCards from '@/partials/home/resortCards';
-import { fetch_data } from '@/partials/home/homeType';
+import { ApiUrl } from '@/constant/env';
 import HomeBanner from '@/partials/home/banner';
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+import { fetch_data } from '@/partials/home/homeType';
+import ResortCards from '@/partials/home/resortCards';
+import ResortFilteringTabs from '@/partials/home/tabs';
 
 export default function HomePage(resorts: fetch_data) {
   const [isDetail, setIsDetail] = React.useState<boolean>(false);

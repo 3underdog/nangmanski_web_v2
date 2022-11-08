@@ -25,13 +25,9 @@ import PremeiumSVG from '~/svg/Premeium.svg';
 import { resort } from '@/partials/home/homeType';
 
 type BaseDialogProps = {
-  /** Maintained by useDialogStore */
   open: boolean;
-  /** Maintained by useDialogStore */
   onSubmit: () => void;
-  /** Maintained by useDialogStore */
   onClose: () => void;
-  /** Customizable Dialog Options */
   options: DialogOptions;
 };
 
@@ -53,23 +49,9 @@ export default function BaseDialog({
 }: BaseDialogProps) {
   const current = colorVariant[variant];
 
-  const sortImages = (images: Array<CueImage>) => {
+  const sortImages = (images: any) => {
     const sortedIamges = images.filter((id) => id);
     return sortedIamges;
-  };
-
-  const getAllCueImages = (images: Array<CueImage>, parts: Array<Part>) => {
-    const allImages: { id: string; image: string }[] = [];
-    sortImages(images).map((image) => {
-      allImages.push(image);
-    });
-    parts.map((part) => {
-      sortImages(part.adminData.images).map((image) => {
-        allImages.push(image);
-      });
-    });
-    console.log(allImages);
-    return allImages;
   };
 
   const copyAddress = (address: string) => {

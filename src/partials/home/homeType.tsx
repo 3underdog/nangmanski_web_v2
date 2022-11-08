@@ -13,7 +13,11 @@ export type resort = {
   openSlopeNameListStr: string | null;
 };
 
-export type resorts = Array<resort>;
+export type resorts = {
+  경기도: Array<resort>;
+  강원도: Array<resort>;
+  '전라도/경상도': Array<resort>;
+};
 
 export type fetch_data = {
   authError: boolean;
