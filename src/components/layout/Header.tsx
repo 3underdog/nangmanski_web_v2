@@ -93,8 +93,14 @@ export default function Header({ mode }: { mode: any }) {
   return (
     <header className='sticky top-0 z-[10] border-b-[1px] bg-white md:z-[50]'>
       <div className='layout flex h-14 items-center justify-between pt-2 md:h-20 md:justify-start md:space-x-20'>
-        <UnstyledLink href='/' className='h-14 w-[120px] pb-2 text-green-700'>
-          <CuechatsaSVG className='h-full text-[100px] md:text-[120px]' />
+        <UnstyledLink href='/' className='h-14 pb-2'>
+          <div className='h2 md:h3 flex flex-row space-x-2 pt-3 md:pt-4'>
+            <div className='bg-gradient-to-r from-sky-500 to-blue-800 bg-clip-text text-transparent'>
+              낭만스키
+            </div>
+            <div className='h2 pt-[2px]'>⛷</div>
+          </div>
+          {/* <CuechatsaSVG className='h-full text-[100px] md:text-[120px]' /> */}
         </UnstyledLink>
 
         {/*Mobile navigation */}
@@ -148,8 +154,8 @@ export default function Header({ mode }: { mode: any }) {
                     )}
                     <div className='flex-col'>
                       <div className='h3 my-auto'>
-                        <span className='text-green-700'>{user.nickName}</span>
-                        님 환영합니다
+                        <span className='text-blue-700'>{user.nickName}</span>님
+                        환영합니다
                       </div>
                       <div className='h5 flex flex-row space-x-2'>
                         <button
@@ -186,12 +192,12 @@ export default function Header({ mode }: { mode: any }) {
                   <button
                     onClick={() => navigateFindCue()}
                     className={clsx(
-                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-green-700',
+                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-700',
                       currentPage === 'findcue' &&
-                        'text-green-700 underline decoration-green-700 decoration-[3px] underline-offset-[10px]'
+                        'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
                     )}
                   >
-                    내큐찾기
+                    스키장
                   </button>
                 </li>
                 <li>
@@ -203,7 +209,7 @@ export default function Header({ mode }: { mode: any }) {
                         'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
                     )}
                   >
-                    내큐팔기
+                    강사매칭
                   </UnstyledLink>
                 </li>
                 <li>
@@ -229,12 +235,12 @@ export default function Header({ mode }: { mode: any }) {
             <UnstyledLink
               href='/findcue'
               className={clsx(
-                'transition duration-150 ease-in-out hover:text-green-700',
+                'transition duration-150 ease-in-out hover:text-blue-700',
                 currentPage === 'findcue' &&
-                  'text-green-700 underline decoration-green-700 decoration-[3px] underline-offset-[10px]'
+                  'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
               )}
             >
-              내큐찾기
+              스키장
             </UnstyledLink>
 
             <UnstyledLink
@@ -245,7 +251,7 @@ export default function Header({ mode }: { mode: any }) {
                   'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
               )}
             >
-              내큐팔기
+              강사매칭
             </UnstyledLink>
 
             <UnstyledLink
@@ -298,7 +304,7 @@ export default function Header({ mode }: { mode: any }) {
                       callbackUrl: '/auth/login',
                     })
                   }
-                  className='text-green-700 transition duration-150 ease-in-out hover:text-gray-400'
+                  className='text-blue-700 transition duration-150 ease-in-out hover:text-gray-400'
                 >
                   로그아웃
                 </button>

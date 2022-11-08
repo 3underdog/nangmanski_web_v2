@@ -150,7 +150,7 @@
 }
 
 input:checked + div {
-  @apply border-green-600;
+  @apply border-blue-600;
 }
 input:checked + div svg {
   @apply block;

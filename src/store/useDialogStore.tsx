@@ -26,7 +26,7 @@ const useDialogStoreBase = create<DialogStoreType>((set) => ({
     cancleText: 'No',
     variant: 'warning',
     catchOnCancel: false,
-    cue: null,
+    resort: null,
   },
   dialog: (options) => {
     set(

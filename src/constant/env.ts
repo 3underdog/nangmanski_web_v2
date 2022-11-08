@@ -5,6 +5,6 @@ export const showLogger = isLocal
   ? true
   : process.env.NEXT_PUBLIC_SHOW_LOGGER === 'true' ?? false;
 
-// export const apiUrl = 'https://api.cue8949.com';
+export const apiUrl = 'https://api.cue8949.com';
 // export const testApiUrl = 'http://kimchibilliards.synology.me:8000';
-export const testApiUrl = 'http://nangmanski.iptime.org:7979/';
+export const ApiUrl = 'http://127.0.0.1:7979/api/v1';
