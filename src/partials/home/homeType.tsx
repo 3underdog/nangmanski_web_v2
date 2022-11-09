@@ -1,4 +1,5 @@
 export type resort = {
+  slopesImageUrl: null;
   address: string;
   addressDepth: string;
   addressDtlDepth: string;
@@ -8,6 +9,7 @@ export type resort = {
   resortCode: string;
   resortName: string;
   slopeList: null;
+  slopeSummary: Array<Array<string>>;
   startTime: string;
   status: 'N' | 'Y' | 'P';
   openSlopeNameListStr: string | null;

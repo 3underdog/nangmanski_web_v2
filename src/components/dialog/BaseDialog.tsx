@@ -24,6 +24,8 @@ import { Carousel } from 'react-responsive-carousel';
 import PremeiumSVG from '~/svg/Premeium.svg';
 import { resort } from '@/partials/home/homeType';
 
+import ReactTable_V8 from '@/components/table/TableV8';
+
 type BaseDialogProps = {
   open: boolean;
   onSubmit: () => void;
@@ -62,6 +64,37 @@ export default function BaseDialog({
     document.execCommand('copy');
     document.body.removeChild(t);
     alert('주소가 클립보드에 복사되었습니다.');
+  };
+
+  // react-table 형식으로 변경해줍니다.
+  const seriallizeSlopeSummary = (slopeSummary: Array<Array<string>>) => {
+    let tableHeader = [] as any;
+    slopeSummary[0].map((header, idx) => {
+      let obj = {} as any;
+      obj['id'] = 'x' + idx.toString();
+      obj['headerName'] = header;
+      tableHeader.push(obj);
+    });
+    tableHeader[0]['id'] = 'operateTime';
+    tableHeader.splice(1, 0, { id: 'spacer', headerName: '' });
+    console.log(slopeSummary, tableHeader);
+
+    let tableData = [] as any;
+    slopeSummary.slice(0).map((rows) => {
+      let obj = {} as any;
+      rows.map((row, idx) => {
+        if (idx == 0) {
+          obj['operateTime'] = row;
+        } else {
+          obj['x' + idx.toString()] = row;
+        }
+      });
+      obj['spacer'] = ' ';
+      tableData.push(obj);
+    });
+    console.log(tableData);
+
+    return ' ';
   };
   return (
     <Transition.Root show={open} as={React.Fragment}>
@@ -118,16 +151,47 @@ export default function BaseDialog({
               </div>
               <div>
                 {resort && (
-                  <div className='pt-10'>
-                    <div>{resort.resortName}</div>
-                    <div>
-                      {resort.address}{' '}
-                      <span onClick={() => copyAddress(resort.address)}>
-                        (복사)
-                      </span>
+                  <div data-aos='fade-up'>
+                    <div className='mb-5 text-center'>
+                      {/* 헤더 */}
+                      <div className='h4 md:h3 font-medium leading-6 text-gray-900 antialiased md:leading-8'>
+                        {resort.resortName}
+                      </div>
+
+                      {/* 슬로프이미지 */}
+                      <div className='relative h-full w-full rounded-xl pt-5'>
+                        {resort.slopesImageUrl !== null ? (
+                          <Image
+                            alt={resort.resortName}
+                            src={resort.slopesImageUrl}
+                            layout='fill'
+                            objectFit='contain'
+                            placeholder='blur'
+                            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
+                          />
+                        ) : (
+                          <div className='mx-auto flex h-40 w-full max-w-4xl rounded-xl bg-gray-300 md:h-72'>
+                            <div className='my-auto flex-1 text-sm text-gray-600'>
+                              앗 등록된 슬로프 사진이 없어요
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 실시간 슬로프 오픈 현황 */}
+                      <div>{seriallizeSlopeSummary(resort.slopeSummary)}</div>
+
+                      <div className='pt-10'>
+                        <div>
+                          {resort.address}{' '}
+                          <span onClick={() => copyAddress(resort.address)}>
+                            (복사)
+                          </span>
+                        </div>
+                        <div>{resort.phoneNo}</div>
+                        {/* <div>{resort.slopeList}</div> */}
+                      </div>
                     </div>
-                    <div>{resort.phoneNo}</div>
-                    {/* <div>{resort.slopeList}</div> */}
                   </div>
                 )}
               </div>
