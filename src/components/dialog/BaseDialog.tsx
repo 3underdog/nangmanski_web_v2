@@ -207,11 +207,15 @@ export default function BaseDialog({
                           />
                         ) : (
                           <div className='mx-auto flex h-40 w-full max-w-4xl rounded-xl bg-gray-300 md:h-72'>
-                            <div className='my-auto flex-1 text-sm text-gray-600'>
+                            <div className='my-auto flex-1 text-xs text-gray-600'>
                               앗 등록된 슬로프 사진이 없어요
                             </div>
                           </div>
                         )}
+                      </div>
+
+                      <div className='text-right text-xxs text-gray-600'>
+                        이미지 출처 : {resort.resortName} 홈페이지
                       </div>
 
                       {/* 실시간 슬로프 오픈 현황 */}

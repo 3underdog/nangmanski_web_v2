@@ -87,12 +87,15 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
     return <></>;
   };
   return (
-    <div id={key.toString()} className='py-1 text-gray-800'>
+    <div id={key.toString()} className='py-1 text-gray-800 '>
       <div className='flex space-x-3'>
         <div className='flex pt-1' onClick={() => favClicked(resort)}>
           <Heart />
         </div>
-        <div className='h4 flex flex-col' onClick={() => openModal(resort)}>
+        <div
+          className='h4 flex flex-col hover:scale-105 hover:duration-200 hover:ease-in-out'
+          onClick={() => openModal(resort)}
+        >
           <div>
             {resort.addressDtlDepth} · {resort.resortName}
           </div>
@@ -106,7 +109,8 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
                   resort.startTime
                 )}
               </div>
-              <div className=''>자세한 내용이 나오는 곳</div>
+              <div className=''>방문 : 0명 | 게시글 : 0개</div>
+              <div className=''>강사 : 0명 | 제휴샵 : 0개</div>
             </div>
           )}
         </div>
@@ -124,7 +128,7 @@ function ResortCards({
 }) {
   console.log(resorts);
   return (
-    <section className='relative mt-5'>
+    <section className='relative'>
       <div className='layout'>
         <div className='h2 pt-2 pb-3'>강원도</div>
         {resorts.data['강원도'].map((resort: resort, key: number) => {

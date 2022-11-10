@@ -12,7 +12,7 @@ import ResortCards from '@/partials/home/resortCards';
 import ResortFilteringTabs from '@/partials/home/tabs';
 
 export default function HomePage(resorts: fetch_data) {
-  const [isDetail, setIsDetail] = React.useState<boolean>(false);
+  const [isDetail, setIsDetail] = React.useState<boolean>(true);
   const [isFav, setIsFav] = React.useState<boolean>(false);
   return (
     <Layout>
