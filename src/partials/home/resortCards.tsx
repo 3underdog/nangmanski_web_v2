@@ -4,17 +4,14 @@ import useDialog from '@/hooks/useDialog';
 
 import { fetch_data, resort } from './homeType';
 
-import heartOFF from '~/images/heart-off.svg';
-import heartOn from '~/images/heart-on.svg';
-
 const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
   const [isFav, setIsFav] = React.useState<boolean>(false);
   const favClicked = (resort: resort) => {
-    if (isFav == false) {
-      alert(`${resort.resortName} 즐겨찾기에 추가되었습니다.`);
-    } else {
-      alert(`${resort.resortName} 즐겨찾기에서 제거되었습니다.`);
-    }
+    // if (isFav == false) {
+    //   alert(`${resort.resortName} 즐겨찾기에 추가되었습니다.`);
+    // } else {
+    //   alert(`${resort.resortName} 즐겨찾기에서 제거되었습니다.`);
+    // }
     setIsFav(!isFav);
   };
 
@@ -89,11 +86,14 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
   return (
     <div id={key.toString()} className='py-1 text-gray-800 '>
       <div className='flex space-x-3'>
-        <div className='flex pt-1' onClick={() => favClicked(resort)}>
+        <button
+          className='flex bg-none pt-1 focus:bg-none'
+          onClick={() => favClicked(resort)}
+        >
           <Heart />
-        </div>
+        </button>
         <div
-          className='h4 flex flex-col hover:scale-105 hover:duration-200 hover:ease-in-out'
+          className='h4 flex flex-col md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'
           onClick={() => openModal(resort)}
         >
           <div>

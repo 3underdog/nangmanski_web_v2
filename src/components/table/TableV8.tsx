@@ -70,7 +70,8 @@ export default function ReactTable_V8({
                   className={clsx(
                     'boder-slate-200 w-[100px] min-w-[100px] border-r-2 bg-gray-600 py-[5px] text-center text-xxs text-white',
                     'border-b-2 first:absolute first:min-w-[100px] first:border-r-[1px] first:pl-2 first:text-left first:text-xxs',
-                    'second:w-[100px] second:min-w-[100px]'
+                    'second:w-[100px] second:min-w-[100px]',
+                    'font-md'
                   )}
                 >
                   {header.isPlaceholder

@@ -9,11 +9,11 @@ function HomeBanner() {
       <div className='mx-auto max-w-6xl px-4 pt-6 pb-4 md:px-6 md:pt-16'>
         <div
           className='h4 text-left text-gray-600'
-          data-aos='zoom-y-out'
-          data-aos-delay='150'
+          // data-aos='zoom-y-out'
+          // data-aos-delay='20'
         >
           <div className='h-20 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 shadow-md '>
-            <div className='hover:scale-105 hover:duration-200 hover:ease-in-out'>
+            <div className='md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
               <div className='text-md pt-4 pl-6 text-gray-50'>
                 22시즌도 낭만스키와 함께해요
               </div>
