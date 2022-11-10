@@ -67,7 +67,7 @@ export default function BaseDialog({
   };
 
   // react-table 형식으로 변경해줍니다.
-  const seriallizeSlopeSummary = (slopeSummary: Array<Array<string>>) => {
+  const getTableHeader = (slopeSummary: Array<Array<string>>) => {
     let tableHeader = [] as any;
     slopeSummary[0].map((header, idx) => {
       let obj = {} as any;
@@ -77,8 +77,11 @@ export default function BaseDialog({
     });
     tableHeader[0]['id'] = 'operateTime';
     tableHeader.splice(1, 0, { id: 'spacer', headerName: '' });
-    console.log(slopeSummary, tableHeader);
+    return tableHeader;
+  };
 
+  // react-table 형식으로 변경해줍니다.
+  const getTableData = (slopeSummary: Array<Array<string>>) => {
     let tableData = [] as any;
     slopeSummary.slice(0).map((rows) => {
       let obj = {} as any;
@@ -92,10 +95,40 @@ export default function BaseDialog({
       obj['spacer'] = ' ';
       tableData.push(obj);
     });
-    console.log(tableData);
-
-    return ' ';
+    tableData.shift();
+    return tableData;
   };
+
+  const getSlopeLevelInfo = (slopeList: any) => {
+    const getStatus = (status: string) => {
+      if (status === 'C') {
+        return <span className='text-gray-600'>(미오픈)</span>;
+      } else if (status === 'O') {
+        return <span className='text-blue-500'>(오픈)</span>;
+      } else {
+        return <span className='text-gray-500'></span>;
+      }
+    };
+    console.log(slopeList);
+    return (
+      <div className='pl-3 text-left text-xs'>
+        {[...slopeList]
+          .sort(function sort_by_slopeCode(curr, next) {
+            console.log(curr);
+            return curr['slopeCode'] - next['slopeCode'];
+          })
+          .map((slopeListItem: any) => {
+            return (
+              <div className='pt-1'>
+                {slopeListItem['level']} : {slopeListItem['slopeName']}{' '}
+                {getStatus(slopeListItem['status'])}
+              </div>
+            );
+          })}
+      </div>
+    );
+  };
+
   return (
     <Transition.Root show={open} as={React.Fragment}>
       <Dialog
@@ -160,6 +193,9 @@ export default function BaseDialog({
 
                       {/* 슬로프이미지 */}
                       <div className='relative h-full w-full rounded-xl pt-5'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          슬로프 맵
+                        </div>
                         {resort.slopesImageUrl !== null ? (
                           <Image
                             alt={resort.resortName}
@@ -179,17 +215,53 @@ export default function BaseDialog({
                       </div>
 
                       {/* 실시간 슬로프 오픈 현황 */}
-                      <div>{seriallizeSlopeSummary(resort.slopeSummary)}</div>
-
-                      <div className='pt-10'>
-                        <div>
-                          {resort.address}{' '}
-                          <span onClick={() => copyAddress(resort.address)}>
-                            (복사)
-                          </span>
+                      <div className='mt-6'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          실시간 슬로프 현황
                         </div>
-                        <div>{resort.phoneNo}</div>
-                        {/* <div>{resort.slopeList}</div> */}
+                        <ReactTable_V8
+                          tableHeader={getTableHeader(resort.slopeSummary)}
+                          tableData={getTableData(resort.slopeSummary)}
+                        />
+                        <div className='text-right text-xxs text-gray-600'>
+                          좌우 스크롤
+                        </div>
+                      </div>
+
+                      {/* 슬로프 정보 */}
+                      <div className='mt-6'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          슬로프 난이도
+                        </div>
+                        {getSlopeLevelInfo(resort.slopeList)}
+                      </div>
+
+                      {/* 할인 정보 */}
+                      <div className='mt-6'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          할인 / 우대
+                        </div>
+                        <div className='pl-4 pt-1 text-left text-xs text-gray-600'>
+                          기능 준비중입니다.
+                        </div>
+                      </div>
+
+                      {/* 스키장정보 */}
+                      <div className='mt-6'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          스키장 정보
+                        </div>
+                        <div className='space-y-1 pl-4 pt-1 text-left text-xs text-gray-800'>
+                          <div>
+                            주소 : {resort.address}{' '}
+                            <span onClick={() => copyAddress(resort.address)}>
+                              (복사)
+                            </span>
+                          </div>
+                          <div>오픈 : {resort.startTime}</div>
+                          <div>마감 : {resort.endTime}</div>
+                          <div>고객센터 : {resort.phoneNo}</div>
+                        </div>
                       </div>
                     </div>
                   </div>

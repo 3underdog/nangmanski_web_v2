@@ -68,8 +68,8 @@ export default function ReactTable_V8({
                 <th
                   key={header.id}
                   className={clsx(
-                    'boder-slate-200 w-[80px] min-w-[80px] border-r-2 bg-gray-600 py-[5px] text-center text-xxs text-white',
-                    'border-b-2 first:absolute first:min-w-[100px] first:border-r-[1px] first:pl-4 first:text-left',
+                    'boder-slate-200 w-[100px] min-w-[100px] border-r-2 bg-gray-600 py-[5px] text-center text-xxs text-white',
+                    'border-b-2 first:absolute first:min-w-[100px] first:border-r-[1px] first:pl-2 first:text-left first:text-xxs',
                     'second:w-[100px] second:min-w-[100px]'
                   )}
                 >
@@ -91,12 +91,26 @@ export default function ReactTable_V8({
                 <td
                   key={cell.id}
                   className={clsx(
-                    'boder-slate-200 w-[80px] min-w-[80px] border-r-2 bg-white py-[3px] text-center text-xxs',
+                    'boder-slate-200 w-[100px] min-w-[100px] border-r-2 bg-white py-[3px] text-center text-[10px]',
                     'first:absolute first:min-w-[100px] first:border-r-[1px] first:pl-4 first:text-left',
                     'second:w-[100px] second:min-w-[100px]'
                   )}
                 >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  {cell.getValue() === 'O' ? (
+                    <div className='text-blue-600'>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </div>
+                  ) : (
+                    <div className='text-gray-600'>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </div>
+                  )}
                 </td>
               ))}
             </tr>
