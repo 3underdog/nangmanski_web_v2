@@ -2,6 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 
 import Banner1 from '~/images/banner1.png';
+import { Carousel } from 'react-responsive-carousel';
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
 function HomeBanner() {
   return (
@@ -12,16 +15,37 @@ function HomeBanner() {
           // data-aos='zoom-y-out'
           // data-aos-delay='20'
         >
-          <div className='h-20 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 shadow-md '>
-            <div className='md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
-              <div className='text-md pt-4 pl-6 text-gray-50'>
-                22시즌도 낭만스키와 함께해요
-              </div>
-              <div className='pt-1 pl-6 text-sm text-gray-50'>
-                모든 스키장의 실시간 정보를 제공합니다.
+          <Carousel
+            dynamicHeight={true}
+            emulateTouch={true}
+            // showArrows={false}
+            showThumbs={false}
+            showIndicators={true}
+            showStatus={false}
+          >
+            <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left shadow-md '>
+              <div className='pb-10 md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
+                <div className='text-md pt-4 pl-6 text-gray-50'>
+                  22시즌 낭만스키와 함께 💙
+                </div>
+                <div className='h-10 pt-1 pl-6 text-xs text-gray-50'>
+                  얼른 스키장 가고싶지 않나요 ?
+                </div>
               </div>
             </div>
-          </div>
+
+            <div className=' rounded-xl bg-gradient-to-r from-gray-900 to-gray-900 text-left shadow-md '>
+              <div className='pb-10 md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
+                <div className='text-md pt-4 pl-6 text-gray-50'>
+                  여기 배너 광고주 모집 합니다 🖤
+                </div>
+                <div className='h-20 pt-1 pl-6 text-xs text-gray-50'>
+                  <div>cha2hyun.dev@gmail.com 🙏</div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </Carousel>
 
           {/* <div className='flex flex-1 justify-end'>
             <Image className='rounded-xl' src={Banner1} alt='Target' />
