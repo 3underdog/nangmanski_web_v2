@@ -24,12 +24,12 @@ export default function HomePage(resorts: fetch_data) {
           <div className='mb-20 flex min-h-fit flex-col overflow-hidden'>
             <main className='grow'>
               {/* <BetaBanner /> */}
-              <ResortFilteringTabs
+              {/* <ResortFilteringTabs
                 isDetail={isDetail}
                 setIsDetail={setIsDetail}
                 isFav={isFav}
                 setIsFav={setIsFav}
-              />
+              /> */}
               <HomeBanner />
 
               <ResortCards resorts={resorts} isDetail={isDetail} />

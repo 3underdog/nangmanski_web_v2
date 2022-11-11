@@ -31,13 +31,18 @@ export default function Community() {
           </div>
 
           <div className=' bg-[#f6f6f6]'>
-            <div className='layout'>
+            <div className='layout min-h-screen'>
               {status === 'authenticated' && <PostWriteButton />}
-              <InfinitePostList
+              <div className='flex'>
+                <div className='mt-28 flex-1 text-center'>
+                  커뮤니티 준비중 ⛷️{' '}
+                </div>
+              </div>
+              {/* <InfinitePostList
                 keyword={keyword}
                 isRefreshing={isRefreshing}
                 setIsRefreshing={setIsRefreshing}
-              />
+              /> */}
             </div>
           </div>
         </section>

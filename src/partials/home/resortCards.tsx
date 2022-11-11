@@ -93,15 +93,15 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
           <Heart />
         </button>
         <div
-          className='h4 flex flex-col md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'
+          className='h4 flex flex-col pb-1 md:pb-2 md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'
           onClick={() => openModal(resort)}
         >
           <div>
             {resort.addressDtlDepth} · {resort.resortName}
           </div>
           {isDetail && (
-            <div className='h6 md:h5 pb-3 text-gray-700'>
-              <div className=''>
+            <div className='h6 md:h5 space-y-1 pb-3 text-gray-700 md:space-y-2 '>
+              <div className='pt-1 md:pt-2'>
                 {getStatusDesc(
                   resort.status,
                   resort.openSlopeNameListStr,
@@ -126,7 +126,7 @@ function ResortCards({
   resorts: fetch_data;
   isDetail: boolean;
 }) {
-  console.log(resorts);
+  // console.log(resorts);
   return (
     <section className='relative'>
       <div className='layout'>

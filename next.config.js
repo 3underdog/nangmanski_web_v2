@@ -14,14 +14,14 @@ module.exports = {
       },
       {
         source: '/:path*',
-        destination: `https://api.cue8949.com/:path*`,
+        destination: `https://api.nangmanski.com/:path*`,
       },
     ];
   },
 
   // Uncoment to add domain whitelist
   images: {
-    domains: ['image.cue8949.com'],
+    domains: ['image.nangmanski.com'],
   },
 
   // SVGR

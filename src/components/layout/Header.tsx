@@ -11,7 +11,7 @@ import Transition from '@/utils/Transition';
 
 import CuechatsaSVG from '~/svg/Cuechatsa.svg';
 
-type Page = 'home' | 'findcue' | 'sellcue' | 'community' | 'mypage';
+type Page = 'home' | 'home' | 'matching' | 'community' | 'mypage';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, unused-imports/no-unused-vars
 export default function Header({ mode }: { mode: any }) {
@@ -81,8 +81,8 @@ export default function Header({ mode }: { mode: any }) {
     setMobileNavOpen(false);
   };
 
-  const navigateFindCue = () => {
-    router.push('/findcue');
+  const navigateHome = () => {
+    router.push('/');
     window.scrollTo(0, 0);
     setMobileNavOpen(false);
   };
@@ -139,7 +139,7 @@ export default function Header({ mode }: { mode: any }) {
               appear=''
             >
               <ul className='px-5 py-2'>
-                {status === 'authenticated' ? (
+                {/* {status === 'authenticated' ? (
                   <div className='my-5 flex justify-start space-x-3'>
                     {user && user.images && user.images.length > 0 && (
                       <div className='h-12 w-12 rounded-full border-[1px] border-gray-100 bg-gray-600'>
@@ -186,14 +186,14 @@ export default function Header({ mode }: { mode: any }) {
                       로그인 / 회원가입
                     </button>
                   </li>
-                )}
+                )} */}
 
                 <li>
                   <button
-                    onClick={() => navigateFindCue()}
+                    onClick={() => navigateHome()}
                     className={clsx(
                       'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-700',
-                      currentPage === 'findcue' &&
+                      currentPage === 'home' &&
                         'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
                     )}
                   >
@@ -202,10 +202,10 @@ export default function Header({ mode }: { mode: any }) {
                 </li>
                 <li>
                   <UnstyledLink
-                    href='/sellcue'
+                    href='/matching'
                     className={clsx(
                       'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-700',
-                      currentPage === 'sellcue' &&
+                      currentPage === 'matching' &&
                         'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
                     )}
                   >
@@ -233,10 +233,10 @@ export default function Header({ mode }: { mode: any }) {
         <div className='h4 hidden items-center justify-between space-x-10 pt-2 md:flex md:flex-1'>
           <div className='flex flex-1 space-x-8'>
             <UnstyledLink
-              href='/findcue'
+              href='/home'
               className={clsx(
                 'transition duration-150 ease-in-out hover:text-blue-700',
-                currentPage === 'findcue' &&
+                currentPage === 'home' &&
                   'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
               )}
             >
@@ -244,10 +244,10 @@ export default function Header({ mode }: { mode: any }) {
             </UnstyledLink>
 
             <UnstyledLink
-              href='/sellcue'
+              href='/matching'
               className={clsx(
                 'transition duration-150 ease-in-out hover:text-blue-700',
-                currentPage === 'sellcue' &&
+                currentPage === 'matching' &&
                   'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
               )}
             >
@@ -276,7 +276,7 @@ export default function Header({ mode }: { mode: any }) {
               마이페이지
             </UnstyledLink> */}
           </div>
-          <div className='h5 pl-20'>
+          {/* <div className='h5 pl-20'>
             {status === 'authenticated' ? (
               <div className='flex justify-center space-x-2'>
                 <UnstyledLink
@@ -321,7 +321,7 @@ export default function Header({ mode }: { mode: any }) {
                 로그인
               </UnstyledLink>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

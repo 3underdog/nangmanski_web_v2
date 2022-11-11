@@ -3,10 +3,9 @@ import { useRouter } from 'next/router';
 
 // !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: '큐찾사 | 중고큐 거래는 큐찾사',
-  siteName: '큐찾사 | 중고큐 거래는 큐찾사',
-  description:
-    '1,000만 당구인을 위해 (주)김치빌리아드가 제작 운영하는 안전한 중고큐 거래 어플리케이션',
+  title: '낭만스키 | 스키 보드 통합 플랫폼',
+  siteName: '낭만스키 | 스키 보드 통합 플랫폼',
+  description: '22시즌은 낭만스키와 함께해요',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   // url: 'https://tsnext-tw.thcl.dev',
   type: 'website',

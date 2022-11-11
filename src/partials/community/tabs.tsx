@@ -32,12 +32,12 @@ function PostTabs({
             <div className='h6 h4 flex h-10 w-full select-none flex-row-reverse items-center pt-[2px] text-[#a8aaa8]'>
               <button
                 onClick={() => keywordSearchClicked()}
-                className='h6 mb-[2px] ml-2 w-16 rounded-md bg-pink-500 px-3 pt-[2px] text-white md:hover:bg-pink-600'
+                className='h6 mb-[2px] ml-2 w-16 rounded-md bg-blue-500 px-3 pt-[2px] text-white md:hover:bg-blue-600'
               >
                 검색
               </button>
               <input
-                className='h6 placeholder:h6 mx-2 mb-[2px] w-full rounded-md border-[1px] px-2 pt-[1px] text-gray-800 placeholder:leading-6 placeholder:text-[#a8aaa8]  hover:bg-gray-50 focus:border-transparent focus:outline-pink-500 focus:ring-0 md:w-80'
+                className='h6 placeholder:h6 mx-2 mb-[2px] w-full rounded-md border-[1px] px-2 pt-[1px] text-gray-800 placeholder:leading-6 placeholder:text-[#a8aaa8]  hover:bg-gray-50 focus:border-transparent focus:outline-blue-500 focus:ring-0 md:w-80'
                 placeholder='검색어를 입력해주세요 (작성자, 내용, 제목)'
                 value={keyword}
                 onClick={() => {
