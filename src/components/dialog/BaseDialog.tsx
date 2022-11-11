@@ -12,16 +12,9 @@ import {
 } from 'react-icons/hi';
 
 import Button from '@/components/buttons/Button';
-import TimeFormat from '@/utils/TimeFormat';
-import ArrowLink from '@/components/links/ArrowLink';
-import ButtonLink from '@/components/links/ButtonLink';
-
-import { CueImage, Part, Results } from '@/partials/findcue/cueType';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 
-import PremeiumSVG from '~/svg/Premeium.svg';
 import { resort } from '@/partials/home/homeType';
 
 import ReactTable_V8 from '@/components/table/TableV8';
@@ -51,10 +44,10 @@ export default function BaseDialog({
 }: BaseDialogProps) {
   const current = colorVariant[variant];
 
-  const sortImages = (images: any) => {
-    const sortedIamges = images.filter((id) => id);
-    return sortedIamges;
-  };
+  // const sortImages = (images: any) => {
+  //   const sortedIamges = images.filter((id) => id);
+  //   return sortedIamges;
+  // };
 
   const copyAddress = (address: string) => {
     let t = document.createElement('textarea');
