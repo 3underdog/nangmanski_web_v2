@@ -24,7 +24,7 @@ function HomeBanner() {
             showStatus={false}
           >
             <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left shadow-md '>
-              <div className='pb-10 md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
+              <div className='pb-10  md:hover:duration-200 md:hover:ease-in-out'>
                 <div className='text-md pt-4 pl-6 text-gray-50'>
                   22시즌 낭만스키와 함께 💙
                 </div>
