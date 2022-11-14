@@ -18,6 +18,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { resort } from '@/partials/home/homeType';
 
 import ReactTable_V8 from '@/components/table/TableV8';
+import { Carousel } from 'react-responsive-carousel';
 
 type BaseDialogProps = {
   open: boolean;
@@ -185,20 +186,40 @@ export default function BaseDialog({
                       </div>
 
                       {/* 슬로프이미지 */}
+                      <div className='text-md pl-1 pb-1 text-left'>
+                        슬로프 맵
+                      </div>
                       <div className='relative h-full w-full rounded-xl pt-5'>
-                        <div className='text-md pl-1 pb-1 text-left'>
-                          슬로프 맵
-                        </div>
                         {resort.slopesImageUrl !== null ? (
-                          <Image
-                            alt={resort.resortName}
-                            src={resort.slopesImageUrl}
-                            layout='fill'
-                            objectFit='contain'
-                            placeholder='blur'
-                            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
-                          />
+                          <Carousel
+                            dynamicHeight={true}
+                            emulateTouch={false}
+                            showArrows={false}
+                            showThumbs={false}
+                            showIndicators={false}
+                            showStatus={false}
+                          >
+                            <div>
+                              {resort.slopesImageUrl && (
+                                <img
+                                  src={resort.slopesImageUrl}
+                                  className='max-h-[1260px] rounded-xl'
+                                />
+                              )}
+                            </div>
+                            {/* <div></div> */}
+                          </Carousel>
                         ) : (
+                          // <Image
+                          //   alt={resort.resortName}
+                          //   src={resort.slopesImageUrl}
+                          //   layout='fill'
+                          //   width='100%'
+                          //   height='100%'
+                          //   objectFit='contain'
+                          //   placeholder='blur'
+                          //   blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
+                          // />
                           <div className='mx-auto flex h-40 w-full max-w-4xl rounded-xl bg-gray-300 md:h-72'>
                             <div className='my-auto flex-1 text-xs text-gray-600'>
                               앗 등록된 슬로프 사진이 없어요

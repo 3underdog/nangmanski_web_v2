@@ -87,7 +87,7 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
     <div id={key.toString()} className='py-1 text-gray-800 '>
       <div className='flex space-x-3'>
         <button
-          className='flex bg-none pt-1 focus:bg-none'
+          className='flex bg-none pt-1 checked:bg-none hover:bg-none focus:bg-none'
           onClick={() => favClicked(resort)}
         >
           <Heart />
@@ -100,7 +100,7 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
             {resort.addressDtlDepth} · {resort.resortName}
           </div>
           {isDetail && (
-            <div className='h6 md:h5 space-y-1 pb-3 text-gray-700 md:space-y-2 '>
+            <div className='h6 md:h5 space-y-[1px] pb-3 text-gray-700 md:space-y-2 '>
               <div className='pt-1 md:pt-2'>
                 {getStatusDesc(
                   resort.status,
