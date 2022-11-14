@@ -216,9 +216,9 @@ export default function Header({ mode }: { mode: any }) {
                   <button
                     onClick={() => navigateCommunity()}
                     className={clsx(
-                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-pink-500',
+                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-500',
                       currentPage === 'community' &&
-                        'text-pink-500 underline decoration-pink-500 decoration-[3px] underline-offset-[10px]'
+                        'text-blue-500 underline decoration-blue-500 decoration-[3px] underline-offset-[10px]'
                     )}
                   >
                     커뮤니티
@@ -233,7 +233,7 @@ export default function Header({ mode }: { mode: any }) {
         <div className='h4 hidden items-center justify-between space-x-10 pt-2 md:flex md:flex-1'>
           <div className='flex flex-1 space-x-8'>
             <UnstyledLink
-              href='/home'
+              href='/'
               className={clsx(
                 'transition duration-150 ease-in-out hover:text-blue-700',
                 currentPage === 'home' &&
@@ -257,9 +257,9 @@ export default function Header({ mode }: { mode: any }) {
             <UnstyledLink
               href='/community'
               className={clsx(
-                'transition duration-150 ease-in-out hover:text-pink-500',
+                'transition duration-150 ease-in-out hover:text-blue-500',
                 currentPage === 'community' &&
-                  'text-pink-500 underline decoration-pink-500 decoration-[3px] underline-offset-[10px]'
+                  'text-blue-500 underline decoration-blue-500 decoration-[3px] underline-offset-[10px]'
               )}
             >
               커뮤니티

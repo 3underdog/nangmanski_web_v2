@@ -9,7 +9,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 function HomeBanner() {
   return (
     <section className='relative'>
-      <div className='mx-auto max-w-6xl px-4 pt-6 pb-4 md:px-6 md:pt-16'>
+      <div className='mx-auto max-w-6xl px-4 pt-6 pb-4 md:px-6 md:pt-8'>
         <div
           className='h4 text-left text-gray-600'
           // data-aos='zoom-y-out'
