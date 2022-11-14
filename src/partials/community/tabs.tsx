@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { Dispatch, SetStateAction } from 'react';
 
 import ArrowDown from '~/svg/ArrowDown.svg';
@@ -25,8 +26,10 @@ function PostTabs({
   const keywordSearchClicked = () => {
     goFirstPage();
     setIsRefreshing(true);
+    setToggle(false);
   };
 
+  const [countFilter, setCountFilter] = React.useState<number>(0);
   // 필터링
   const [toggle, setToggle] = React.useState<boolean>(false);
 
@@ -35,18 +38,35 @@ function PostTabs({
     setIsAll(false);
     setIsFav(false);
   };
+
+  // 전체스키장
   const [isAll, setIsAll] = React.useState(true);
   const allClicked = () => {
     disableSecondRow();
-    setIsAll(!isAll);
+    setIsAll(true);
+    setIsVivaldi(true);
+    setIsOakVally(true);
+    setIsHighOne(true);
+    setIsElisian(true);
+    setIsYongPyung(true);
+    setisOtwo(true);
+    setisJisan(true);
+    setisDuckYouSan(true);
     setIsFav(false);
+    setCountFilter(8);
   };
+
+  // 즐겨찾기
   const [isFav, setIsFav] = React.useState(false);
   const favClicked = () => {
     disableSecondRow();
     setIsAll(false);
     setIsFav(!isFav);
+    setCountFilter(0);
   };
+
+  // 필터
+  const [isFilter, setIsFilter] = React.useState(false);
 
   // 두번째 필터링 관련
   const disableSecondRow = () => {
@@ -65,12 +85,22 @@ function PostTabs({
   const vivaldiClicked = () => {
     disableFirstRow();
     setIsVivaldi(!isVivaldi);
+    if (isVivaldi) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
   // 오크밸리
   const [isOakVally, setIsOakVally] = React.useState(false);
   const oakVallyClicked = () => {
     disableFirstRow();
     setIsOakVally(!isOakVally);
+    if (isOakVally) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 하이원
@@ -78,6 +108,11 @@ function PostTabs({
   const highOneClicked = () => {
     disableFirstRow();
     setIsHighOne(!isHighOne);
+    if (isHighOne) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 엘리시안
@@ -85,6 +120,11 @@ function PostTabs({
   const elisianClicked = () => {
     disableFirstRow();
     setIsElisian(!isElisian);
+    if (isElisian) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 용평
@@ -92,6 +132,11 @@ function PostTabs({
   const yongPyungClicked = () => {
     disableFirstRow();
     setIsYongPyung(!isYongPyung);
+    if (isYongPyung) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 오투
@@ -99,6 +144,11 @@ function PostTabs({
   const otwoClicked = () => {
     disableFirstRow();
     setisOtwo(!isOtwo);
+    if (isOtwo) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 경기도
@@ -107,6 +157,11 @@ function PostTabs({
   const jisanClicked = () => {
     disableFirstRow();
     setisJisan(!isJisan);
+    if (isJisan) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
 
   // 전라/경상
@@ -115,7 +170,75 @@ function PostTabs({
   const duckYouSanClicked = () => {
     disableFirstRow();
     setisDuckYouSan(!isDuckYouSan);
+    if (isDuckYouSan) {
+      setCountFilter(countFilter - 1);
+    } else {
+      setCountFilter(countFilter + 1);
+    }
   };
+
+  const applyFilter = () => {
+    if (toggle == false) {
+      setToggle(!toggle);
+    } else if (isAll) {
+      setToggle(!toggle);
+    } else {
+      if (countFilter == 0) {
+        alert('1개 이상 스키장을 선택해주세요');
+      } else {
+        setToggle(false);
+      }
+    }
+    console.log(
+      '현재 선택된 필터링들을 표시합니다 \n',
+      'Vivaldi:',
+      isVivaldi,
+      '\n',
+      'OakVally:',
+      isOakVally,
+      '\n',
+      'HighOne:',
+      isHighOne,
+      '\n',
+      'Elisian:',
+      isElisian,
+      '\n',
+      'YongPyung:',
+      isYongPyung,
+      '\n',
+      'Otwo:',
+      isOtwo,
+      '\n',
+      'Jisan:',
+      isJisan,
+      '\n',
+      'DuckYouSan:',
+      isDuckYouSan,
+      '\n'
+    );
+  };
+
+  // 필터관련 useEffect
+  React.useEffect(() => {
+    if (countFilter > 0) {
+      setIsFilter(true);
+    }
+    if (isAll || isFav) {
+      setIsFilter(false);
+    }
+  }, [
+    isAll,
+    isFav,
+    isVivaldi,
+    isOakVally,
+    isHighOne,
+    isElisian,
+    isYongPyung,
+    isOtwo,
+    isJisan,
+    isDuckYouSan,
+    countFilter,
+  ]);
 
   return (
     <section className='relative'>
@@ -144,7 +267,7 @@ function PostTabs({
                   <g fill='none' fillRule='evenodd'>
                     <g
                       transform='translate(-9 -11)'
-                      fill='rgb(56, 61, 117)'
+                      fill='rgb(92, 96, 141)'
                       fillRule='nonzero'
                     >
                       <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -158,7 +281,7 @@ function PostTabs({
                   isAll ? 'text-blue-700 ' : 'text-[#a8aaa8]'
                 } `}
               >
-                전체게시글
+                스키장전체
               </label>
             </div>
 
@@ -183,7 +306,7 @@ function PostTabs({
                   <g fill='none' fillRule='evenodd'>
                     <g
                       transform='translate(-9 -11)'
-                      fill='rgb(56, 61, 117)'
+                      fill='rgb(92, 96, 141)'
                       fillRule='nonzero'
                     >
                       <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -201,10 +324,51 @@ function PostTabs({
               </label>
             </div>
 
+            {/* 필터 */}
+            <div className='flex items-center'>
+              <input
+                type='checkbox'
+                id='Filter-yes'
+                name='Filter-confirmation'
+                value='yes'
+                className='absolute h-8 w-8 opacity-0'
+                onChange={() => setToggle(true)}
+                checked={isFilter}
+              />
+              <div className='mr-2 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md border-2 border-gray-400 bg-white focus-within:border-blue-600'>
+                <svg
+                  className='pointer-events-none hidden h-3 w-3 fill-current text-blue-600'
+                  version='1.1'
+                  viewBox='0 0 17 12'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <g fill='none' fillRule='evenodd'>
+                    <g
+                      transform='translate(-9 -11)'
+                      fill='rgb(92, 96, 141)'
+                      fillRule='nonzero'
+                    >
+                      <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <label
+                htmlFor='Filter-yes'
+                className={`h6 md:h5 select-none pt-[2px] md:pt-[4px] ${
+                  isFilter ? 'text-blue-700 ' : 'text-[#a8aaa8]'
+                } `}
+              >
+                필터
+              </label>
+            </div>
+
             {/* 토글 */}
             <div
               className='flex-2 flex items-center'
-              onClick={() => setToggle(!toggle)}
+              onClick={() => {
+                applyFilter();
+              }}
             >
               <div className='h1 md:h2 text-gray-700'>
                 {!toggle ? <ArrowDown /> : <ArrowUp />}
@@ -215,8 +379,10 @@ function PostTabs({
           {/* 두번째 줄 */}
           {toggle && (
             <div data-aos='fade-in'>
-              <div className='mt-3 h-[1px] w-full bg-gray-300' />
-              <div className='pt-6 pb-1'>강원도</div>
+              <div className='mt-2 h-[1px] w-full bg-gray-300' />
+              <div className='bg-gradient-to-r from-gray-700 to-gray-800 bg-clip-text pt-5 pb-1 text-transparent'>
+                강원도
+              </div>
               <div className='flex flex-row flex-wrap space-x-5 pt-1'>
                 {/* 비발디 */}
                 <div className='flex items-center'>
@@ -239,7 +405,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -278,7 +444,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -317,7 +483,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -356,7 +522,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -397,7 +563,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -411,7 +577,7 @@ function PostTabs({
                       isYongPyung ? 'text-blue-700 ' : 'text-[#a8aaa8]'
                     } `}
                   >
-                    용평
+                    용평스키장
                   </label>
                 </div>
 
@@ -436,7 +602,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -450,12 +616,14 @@ function PostTabs({
                       isOtwo ? 'text-blue-700 ' : 'text-[#a8aaa8]'
                     } `}
                   >
-                    오투
+                    오투스키장
                   </label>
                 </div>
               </div>
 
-              <div className='pt-6 pb-1'>경기도</div>
+              <div className='bg-gradient-to-r from-gray-700 to-gray-800 bg-clip-text pt-6 pb-1 text-transparent'>
+                경기도
+              </div>
               <div className='flex flex-row flex-wrap space-x-5 pt-1'>
                 {/* 지산 */}
                 <div className='flex items-center'>
@@ -478,7 +646,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -492,12 +660,14 @@ function PostTabs({
                       isJisan ? 'text-blue-700 ' : 'text-[#a8aaa8]'
                     } `}
                   >
-                    지산
+                    지산스키장
                   </label>
                 </div>
               </div>
 
-              <div className='pt-6 pb-1'>전라/경상</div>
+              <div className='bg-gradient-to-r from-gray-700 to-gray-800 bg-clip-text pt-6 pb-1 text-transparent'>
+                전라/경상
+              </div>
               <div className='flex flex-row flex-wrap space-x-5 pt-1'>
                 {/* 지산 */}
                 <div className='flex items-center'>
@@ -520,7 +690,7 @@ function PostTabs({
                       <g fill='none' fillRule='evenodd'>
                         <g
                           transform='translate(-9 -11)'
-                          fill='rgb(56, 61, 117)'
+                          fill='rgb(92, 96, 141)'
                           fillRule='nonzero'
                         >
                           <path d='m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z' />
@@ -534,14 +704,31 @@ function PostTabs({
                       isDuckYouSan ? 'text-blue-700 ' : 'text-[#a8aaa8]'
                     } `}
                   >
-                    덕유산
+                    덕유산스키장
                   </label>
                 </div>
               </div>
 
+              <div className='mb-6 flex flex-row flex-wrap space-x-3 pt-1'>
+                <div className='h-8 flex-1' />
+                <button
+                  onClick={() => applyFilter()}
+                  className={clsx(
+                    'h6  rounded-md  px-3 pt-[3px] text-white ',
+                    countFilter == 0
+                      ? 'bg-gray-400 hover:bg-gray-500'
+                      : 'bg-blue-500 hover:bg-blue-600'
+                  )}
+                >
+                  {countFilter}개 스키장만 보기
+                </button>
+              </div>
+
               {/* 게시글 검색 */}
               <div className='mt-6 h-[1px] w-full bg-gray-300' />
-              <div className='pt-6 pb-1'>게시글 검색</div>
+              <div className='bg-gradient-to-r from-gray-700 to-gray-800 bg-clip-text pt-6 pb-1 text-transparent'>
+                게시글 검색
+              </div>
               <div className='mb-6 flex flex-row flex-wrap space-x-3 pt-1'>
                 <input
                   className='h6 placeholder:h6 mr-2 w-full flex-1 rounded-md border-[1px] px-2 pt-[6px] pb-[3px] text-gray-800 placeholder:leading-6 placeholder:text-[#a8aaa8] hover:bg-gray-50  focus:border-transparent focus:outline-blue-500 focus:ring-0 md:w-80 md:pt-[8px] md:pb-[4px]'
@@ -557,10 +744,21 @@ function PostTabs({
                 />
                 <button
                   onClick={() => keywordSearchClicked()}
-                  className='h6 flex-3 w-16 rounded-md bg-blue-500 px-3 pt-[3px] text-white md:hover:bg-blue-600'
+                  className='h6 flex-3 h-8 w-16 rounded-md bg-blue-500 px-3 pt-[3px] text-white hover:bg-blue-600'
                 >
                   검색
                 </button>
+              </div>
+              {/* 토글 */}
+              <div
+                className='mb-3 flex justify-center'
+                onClick={() => {
+                  applyFilter();
+                }}
+              >
+                <div className='h1 md:h2 text-gray-700'>
+                  <ArrowUp />
+                </div>
               </div>
             </div>
           )}
