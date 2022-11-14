@@ -19,6 +19,7 @@ import { resort } from '@/partials/home/homeType';
 
 import ReactTable_V8 from '@/components/table/TableV8';
 import { Carousel } from 'react-responsive-carousel';
+import router from 'next/router';
 
 type BaseDialogProps = {
   open: boolean;
@@ -280,6 +281,33 @@ export default function BaseDialog({
                           <div>오픈 : {resort.startTime}</div>
                           <div>마감 : {resort.endTime}</div>
                           <div>고객센터 : {resort.phoneNo}</div>
+                        </div>
+                      </div>
+
+                      {/* 커뮤니티 바로가기 */}
+                      <div className='mt-6'>
+                        <div className='text-md pl-1 pb-1 text-left'>
+                          {resort.resortName}에서 함께 소통해요 💙
+                        </div>
+                        <div className='flex flex-row space-x-4'>
+                          <div
+                            className='mt-1 flex-1 cursor-pointer rounded-md bg-gradient-to-r from-blue-500 to-blue-600 px-5 py-3 pb-2 text-xs text-white'
+                            onClick={() => {
+                              router.push('/community');
+                              onClose();
+                            }}
+                          >
+                            커뮤니티 (게시글 : 0개)
+                          </div>
+                          <div
+                            className='mt-1 flex-1 cursor-pointer rounded-md bg-gradient-to-r from-sky-500 to-sky-600 px-5 py-3 pb-2 text-xs text-white'
+                            onClick={() => {
+                              router.push('/matching');
+                              onClose();
+                            }}
+                          >
+                            강습매칭 (강사 : 0명)
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -201,18 +201,6 @@ export default function Header({ mode }: { mode: any }) {
                   </button>
                 </li>
                 <li>
-                  <UnstyledLink
-                    href='/matching'
-                    className={clsx(
-                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-700',
-                      currentPage === 'matching' &&
-                        'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
-                    )}
-                  >
-                    강사매칭
-                  </UnstyledLink>
-                </li>
-                <li>
                   <button
                     onClick={() => navigateCommunity()}
                     className={clsx(
@@ -223,6 +211,18 @@ export default function Header({ mode }: { mode: any }) {
                   >
                     커뮤니티
                   </button>
+                </li>
+                <li>
+                  <UnstyledLink
+                    href='/matching'
+                    className={clsx(
+                      'h3 flex py-2 transition duration-150 ease-in-out hover:text-blue-700',
+                      currentPage === 'matching' &&
+                        'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
+                    )}
+                  >
+                    강습받기
+                  </UnstyledLink>
                 </li>
               </ul>
             </Transition>
@@ -244,17 +244,6 @@ export default function Header({ mode }: { mode: any }) {
             </UnstyledLink>
 
             <UnstyledLink
-              href='/matching'
-              className={clsx(
-                'transition duration-150 ease-in-out hover:text-blue-700',
-                currentPage === 'matching' &&
-                  'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
-              )}
-            >
-              강사매칭
-            </UnstyledLink>
-
-            <UnstyledLink
               href='/community'
               className={clsx(
                 'transition duration-150 ease-in-out hover:text-blue-500',
@@ -263,6 +252,17 @@ export default function Header({ mode }: { mode: any }) {
               )}
             >
               커뮤니티
+            </UnstyledLink>
+
+            <UnstyledLink
+              href='/matching'
+              className={clsx(
+                'transition duration-150 ease-in-out hover:text-blue-700',
+                currentPage === 'matching' &&
+                  'text-blue-700 underline decoration-blue-700 decoration-[3px] underline-offset-[10px]'
+              )}
+            >
+              강습받기
             </UnstyledLink>
 
             {/* <UnstyledLink
