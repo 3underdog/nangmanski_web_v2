@@ -29,7 +29,7 @@ module.exports = {
       'kangwonland.high1.com',
       'www.elysian.co.kr',
       'www.yongpyong.co.kr',
-      'https://www.mdysresort.com',
+      'www.mdysresort.com',
       'www.o2resort.com',
     ],
   },
