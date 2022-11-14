@@ -199,6 +199,7 @@ export default function BaseDialog({
                             showIndicators={false}
                             showStatus={false}
                           >
+                            // @ts-ignore
                             <div>
                               {resort.slopesImageUrl && (
                                 <img
