@@ -8,10 +8,18 @@ function PostTabs({
   keyword,
   setKeyword,
   setIsRefreshing,
+  toggle,
+  setToggle,
+  countFilter,
+  setCountFilter,
 }: {
   keyword: string;
   setKeyword: Dispatch<SetStateAction<string>>;
   setIsRefreshing: Dispatch<SetStateAction<boolean>>;
+  toggle: boolean;
+  setToggle: Dispatch<SetStateAction<boolean>>;
+  countFilter: number;
+  setCountFilter: Dispatch<SetStateAction<number>>;
 }) {
   const goFirstPage = () => {
     window.scrollTo({
@@ -29,9 +37,8 @@ function PostTabs({
     setToggle(false);
   };
 
-  const [countFilter, setCountFilter] = React.useState<number>(0);
   // 필터링
-  const [toggle, setToggle] = React.useState<boolean>(false);
+  // const [toggle, setToggle] = React.useState<boolean>(false);
 
   // 첫번째 필터링
   const disableFirstRow = () => {
@@ -378,7 +385,7 @@ function PostTabs({
 
           {/* 두번째 줄 */}
           {toggle && (
-            <div data-aos='fade-in'>
+            <div data-aos='fade-down'>
               <div className='mt-2 h-[1px] w-full bg-gray-300' />
               <div className='bg-gradient-to-r from-gray-700 to-gray-800 bg-clip-text pt-5 pb-1 text-transparent'>
                 강원도
@@ -541,7 +548,7 @@ function PostTabs({
                 </div>
               </div>
 
-              <div className='flex flex-row flex-wrap space-x-5 pt-2'>
+              <div className='flex flex-row flex-wrap space-x-5 pt-3'>
                 {/* 용평 */}
                 <div className='flex items-center'>
                   <input

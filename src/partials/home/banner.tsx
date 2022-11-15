@@ -1,17 +1,22 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
-
-import Banner1 from '~/images/banner1.png';
 import { Carousel } from 'react-responsive-carousel';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+
+import Banner1 from '~/images/banner1.png';
 
 function HomeBanner() {
   return (
     <section className='relative'>
       <div className='mx-auto max-w-6xl px-4 pt-6 pb-4 md:px-6 md:pt-8'>
         <div
-          className='h4 text-left text-gray-600'
+          className={clsx(
+            'h4 text-left text-gray-600',
+            'rounded-xl shadow-md',
+            'duration-200 md:hover:scale-[1.02] md:hover:ease-in-out'
+          )}
           // data-aos='zoom-y-out'
           // data-aos-delay='20'
         >
@@ -23,7 +28,7 @@ function HomeBanner() {
             showIndicators={true}
             showStatus={false}
           >
-            <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left shadow-md '>
+            <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left shadow-md'>
               <div className='pb-10  md:hover:duration-200 md:hover:ease-in-out'>
                 <div className='text-md pt-4 pl-6 text-gray-50'>
                   22시즌 낭만스키와 함께 💙
@@ -35,7 +40,7 @@ function HomeBanner() {
             </div>
 
             <div className=' rounded-xl bg-gradient-to-r from-gray-900 to-gray-900 text-left shadow-md '>
-              <div className='pb-10 md:hover:scale-105 md:hover:duration-200 md:hover:ease-in-out'>
+              <div className='pb-10 md:hover:ease-in-out'>
                 <div className='text-md pt-4 pl-6 text-gray-50'>
                   여기 배너 광고주 모집 합니다 🖤
                 </div>

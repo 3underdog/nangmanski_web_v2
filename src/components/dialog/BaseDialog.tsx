@@ -187,10 +187,10 @@ export default function BaseDialog({
                       </div>
 
                       {/* 슬로프이미지 */}
-                      <div className='text-md pl-1 pb-1 text-left'>
+                      <div className='text-md pl-1 pb-1 pt-5 text-left'>
                         슬로프 맵
                       </div>
-                      <div className='relative h-full w-full rounded-xl pt-5'>
+                      <div className='relative h-full w-full rounded-xl pt-1'>
                         {resort.slopesImageUrl !== null ? (
                           <Carousel
                             dynamicHeight={true}
@@ -299,7 +299,7 @@ export default function BaseDialog({
                           >
                             커뮤니티
                             <br />
-                            (게시글 : 0개)
+                            <span className='text-xxs'>(게시글 : 0개)</span>
                           </div>
                           <div
                             className='mt-1 flex-1 cursor-pointer rounded-md bg-gradient-to-r from-sky-500 to-sky-600 px-5 py-3 pb-2 text-xs text-white'
@@ -310,7 +310,7 @@ export default function BaseDialog({
                           >
                             강습매칭
                             <br />
-                            (강사 : 0명)
+                            <span className='text-xxs'>(강사 : 0명)</span>
                           </div>
                         </div>
                       </div>
