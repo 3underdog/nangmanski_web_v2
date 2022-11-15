@@ -3,10 +3,10 @@ import * as React from 'react';
 
 export default function Footer() {
   return (
-    <footer className='border-t-[1px] bg-white'>
+    <footer className='border-t-[1px] border-gray-200 bg-white'>
       <div className='mx-auto max-w-6xl px-4 sm:px-6'>
         {/* Bottom area */}
-        <div className='border-t border-slate-200 py-6 md:flex md:items-center md:justify-between md:py-8'>
+        <div className=' py-6 md:flex md:items-center md:justify-between md:py-8'>
           {/* Copyrights note */}
           <div className='h6 mr-4 text-slate-500'>
             <div className='h3 md:h4 mb-2 '>
