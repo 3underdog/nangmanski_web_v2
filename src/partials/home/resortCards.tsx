@@ -90,7 +90,8 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
         className={clsx(
           'duration-200 md:hover:scale-[1.02] md:hover:ease-in-out',
           'rounded-xl border-[1.5px] shadow-md md:border-[2px]',
-          'border-gray-200/50 md:hover:border-blue-600/75'
+          'border-gray-200/50 md:hover:border-blue-600/75',
+          'bg-white'
         )}
       >
         <div className={clsx('flex space-x-3', 'pt-4 pl-4 pb-1')}>
@@ -101,7 +102,7 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
             <Heart />
           </button>
           <div
-            className='h4 flex flex-col pb-1 md:pb-2 '
+            className='h4 flex flex-1 flex-col pb-1 md:pb-2'
             onClick={() => openModal(resort)}
           >
             <div>
@@ -137,7 +138,7 @@ function ResortCards({
 }) {
   // console.log(resorts);
   return (
-    <section className='relative'>
+    <section className='relative pb-20'>
       <div className='layout'>
         <div className='h2 mt-5 pt-2 pb-3'>강원도</div>
         {resorts.data['강원도'].map((resort: resort, key: number) => {

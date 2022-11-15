@@ -20,8 +20,8 @@ export default function HomePage(resorts: fetch_data) {
       <Seo />
 
       <main>
-        <section className='bg-white dark:bg-white'>
-          <div className='mb-20 flex min-h-fit flex-col overflow-hidden'>
+        <section className='bg-[#f6f6f6] dark:bg-[#f6f6f6]'>
+          <div className='flex min-h-fit flex-col overflow-hidden'>
             <main className='grow'>
               {/* <BetaBanner /> */}
               {/* <ResortFilteringTabs

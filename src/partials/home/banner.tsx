@@ -14,7 +14,7 @@ function HomeBanner() {
         <div
           className={clsx(
             'h4 text-left text-gray-600',
-            'rounded-xl shadow-md',
+            'rounded-xl',
             'duration-200 md:hover:scale-[1.02] md:hover:ease-in-out'
           )}
           // data-aos='zoom-y-out'
@@ -28,7 +28,7 @@ function HomeBanner() {
             showIndicators={true}
             showStatus={false}
           >
-            <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left shadow-md'>
+            <div className=' rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-left'>
               <div className='pb-10  md:hover:duration-200 md:hover:ease-in-out'>
                 <div className='text-md pt-4 pl-6 text-gray-50'>
                   22시즌 낭만스키와 함께 💙
