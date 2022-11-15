@@ -24,11 +24,11 @@ export default function Community() {
         <section className='bg-white'>
           <MatchingBanner />
           <div className='sticky top-14 z-[1] border-b-[1px] md:top-20 md:z-[1]'>
-            <PostTabs
+            {/* <PostTabs
               keyword={keyword}
               setKeyword={setKeyword}
               setIsRefreshing={setIsRefreshing}
-            />
+            /> */}
           </div>
 
           <div className=' bg-[#f6f6f6]'>
