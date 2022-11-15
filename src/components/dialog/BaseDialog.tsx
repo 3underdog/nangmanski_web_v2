@@ -297,7 +297,9 @@ export default function BaseDialog({
                               onClose();
                             }}
                           >
-                            커뮤니티 (게시글 : 0개)
+                            커뮤니티
+                            <br />
+                            (게시글 : 0개)
                           </div>
                           <div
                             className='mt-1 flex-1 cursor-pointer rounded-md bg-gradient-to-r from-sky-500 to-sky-600 px-5 py-3 pb-2 text-xs text-white'
@@ -306,7 +308,9 @@ export default function BaseDialog({
                               onClose();
                             }}
                           >
-                            강습매칭 (강사 : 0명)
+                            강습매칭
+                            <br />
+                            (강사 : 0명)
                           </div>
                         </div>
                       </div>

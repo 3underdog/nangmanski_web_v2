@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { Dispatch, SetStateAction } from 'react';
 
 import useDialog from '@/hooks/useDialog';
@@ -18,8 +19,8 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
   const Heart = () => {
     return (
       <svg
-        width='21'
-        height='18'
+        width='20'
+        height='17'
         viewBox='0 0 18 15'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
@@ -84,42 +85,60 @@ const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
     return <></>;
   };
   return (
-    <div id={key.toString()} className='py-1 text-gray-800 '>
-      <div className='flex space-x-3 duration-200 md:hover:scale-[1.02] md:hover:ease-in-out'>
-        <button
-          className='flex bg-none pt-1 checked:bg-none hover:bg-none focus:bg-none'
-          onClick={() => favClicked(resort)}
-        >
-          <Heart />
-        </button>
-        <div
-          className='h4 flex flex-col pb-1 md:pb-2 '
-          onClick={() => openModal(resort)}
-        >
-          <div>
-            {resort.addressDtlDepth} · {resort.resortName}
-          </div>
-          {isDetail && (
-            <div className='h6 md:h5 space-y-[1px] pb-3 text-gray-700 md:space-y-2 '>
-              <div className='pt-1 md:pt-2'>
-                {getStatusDesc(
-                  resort.status,
-                  resort.openSlopeNameListStr,
-                  resort.endTime,
-                  resort.startTime
-                )}
-              </div>
-              <div className=''>방문 : 0명 | 게시글 : 0개</div>
-              <div className=''>강사 : 0명 | 제휴샵 : 0개</div>
+    <div
+      className={clsx(
+        'mx-auto mt-5 h-full w-full rounded-xl  p-[5px] transition-all ',
+        'bg-gray-200 from-sky-500 to-blue-800 md:hover:bg-gradient-to-r',
+        // 'bg-gradient-to-t from-red-500 via-black to-white md:hover:bg-right-bottom ',
+        'rounded-lg md:hover:scale-[1.02] md:hover:duration-500',
+        'drop-shadow-md md:drop-shadow-lg'
+      )}
+    >
+      <div
+        id={key.toString()}
+        className={clsx(
+          'rounded-lg bg-white px-[1px] py-[1px] drop-shadow-md md:rounded-lg md:px-3 md:py-3 '
+          // 'rounded-lg md:py-3 md:pl-3'
+          // 'border-[1px]  md:border-[2px] border-gray-300 shadow-md',
+          // 'transform rounded-lg transition md:hover:scale-[1.02] md:hover:duration-300'
+        )}
+      >
+        <div className='flex space-x-3 p-3'>
+          <button
+            className='flex bg-none pt-1 checked:bg-none hover:bg-none focus:bg-none'
+            onClick={() => favClicked(resort)}
+          >
+            <Heart />
+          </button>
+          <div
+            className='h4 flex flex-col pb-1 md:pb-2'
+            onClick={() => openModal(resort)}
+          >
+            <div>
+              {resort.addressDtlDepth} · {resort.resortName}
             </div>
-          )}
+            {isDetail && (
+              <div className='h6 md:h5 space-y-[1px] pb-3 text-gray-700 md:space-y-2 '>
+                <div className='pt-1 md:pt-2'>
+                  {getStatusDesc(
+                    resort.status,
+                    resort.openSlopeNameListStr,
+                    resort.endTime,
+                    resort.startTime
+                  )}
+                </div>
+                <div className=''>방문 : 0명 | 게시글 : 0개</div>
+                <div className=''>강사 : 0명 | 제휴샵 : 0개</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-function ResortCards({
+function TestResortCards({
   resorts,
   isDetail,
 }: {
@@ -130,22 +149,23 @@ function ResortCards({
   return (
     <section className='relative'>
       <div className='layout'>
-        <div className='h2 pt-2 pb-3 md:mt-5'>강원도</div>
+        <div className='h2 mt-5 md:mt-12'>강원도</div>
         {resorts.data['강원도'].map((resort: resort, key: number) => {
           return ResortCard(resort, key, isDetail);
         })}
 
-        <div className='h2 mt-5 py-3'>경기도</div>
+        <div className='h2 mt-12 mb-3 md:mt-16 md:pt-1'>경기도</div>
         {resorts.data['경기도'].map((resort: resort, key: number) => {
           return ResortCard(resort, key, isDetail);
         })}
 
-        <div className='h2 mt-5 py-3'>전라/경상</div>
+        <div className='h2 mt-12 mb-3 md:mt-16 md:pt-1'>전라/경상</div>
         {resorts.data['전라도/경상도'].map((resort: resort, key: number) => {
           return ResortCard(resort, key, isDetail);
         })}
       </div>
+      <div className='pt-5'></div>
     </section>
   );
 }
-export default ResortCards;
+export default TestResortCards;
