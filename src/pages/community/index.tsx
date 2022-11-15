@@ -25,17 +25,6 @@ export default function Community() {
       <main>
         <section className='bg-white'>
           <PostBanner />
-          <div className='sticky top-14 z-[1] border-b-[1px] md:top-20 md:z-[1]'>
-            <PostTabs
-              keyword={keyword}
-              setKeyword={setKeyword}
-              setIsRefreshing={setIsRefreshing}
-              toggle={toggle}
-              setToggle={setToggle}
-              countFilter={countFilter}
-              setCountFilter={setCountFilter}
-            />
-          </div>
           {toggle && (
             <div
               className='fixed min-h-screen w-full bg-black/50'
@@ -47,6 +36,17 @@ export default function Community() {
               }}
             />
           )}
+          <div className='sticky top-14 z-[1] border-b-[1px] md:top-20 md:z-[1]'>
+            <PostTabs
+              keyword={keyword}
+              setKeyword={setKeyword}
+              setIsRefreshing={setIsRefreshing}
+              toggle={toggle}
+              setToggle={setToggle}
+              countFilter={countFilter}
+              setCountFilter={setCountFilter}
+            />
+          </div>
           <div className=' bg-[#f6f6f6]'>
             <div className='layout min-h-screen'>
               {status === 'authenticated' && <PostWriteButton />}
