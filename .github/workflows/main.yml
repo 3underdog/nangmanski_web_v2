@@ -1,0 +1,28 @@
+name: Next CI with SSH
+
+on:
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using key
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.REMOTE_IP }}
+        username: ${{ secrets.REMOTE_SSH_ID }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        port: ${{ secrets.REMOTE_SSH_PORT }}
+        script: |
+          git fetch --all
+          git reset --hard origin
+          git pull origin main
+          yarn install
+          yarn build
+          pm2 delete next
+          pm2 start yarn --watch -i 2 --name "next" -- start
