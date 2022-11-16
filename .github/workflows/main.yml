@@ -1,4 +1,4 @@
-name: Next CI with SSH
+name: Next CD with SSH
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         port: ${{ secrets.REMOTE_SSH_PORT }}
         script: |
+          cd code/nangmanski_web_v2/
           git fetch --all
           git reset --hard origin
           git pull origin main
