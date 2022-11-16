@@ -1,18 +1,99 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import axios from 'axios';
+import clsx from 'clsx';
+import React from 'react';
+import toast from 'react-hot-toast';
 
 import useDialog from '@/hooks/useDialog';
 
 import { fetch_data, resort } from './homeType';
-import clsx from 'clsx';
 
 const ResortCard = (resort: resort, key: number, isDetail: boolean) => {
   const [isFav, setIsFav] = React.useState<boolean>(false);
   const favClicked = (resort: resort) => {
-    // if (isFav == false) {
-    //   alert(`${resort.resortName} 즐겨찾기에 추가되었습니다.`);
-    // } else {
-    //   alert(`${resort.resortName} 즐겨찾기에서 제거되었습니다.`);
-    // }
+    // TODO: 유저 구현 후 즐겨찾기 수정 api로 변경해주어야 합니다.
+    if (isFav) {
+      toast.promise(
+        axios.get('').then((res) => {
+          return res;
+        }),
+        {
+          loading: (
+            <span className='pb-[2px] pt-[4px] text-center text-sm text-gray-700'>
+              적용중 ⛷️
+            </span>
+          ),
+          success: (
+            <span className='center pt-[4px] pb-[2px] text-center text-sm text-gray-700'>
+              {resort.resortName} 즐겨찾기
+              <span className='text-[#e10b39]'> 제거완료</span>
+            </span>
+          ),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          error: (err: any) =>
+            err?.response?.data?.msg ?? (
+              <span className='pb-[2px] pt-[4px] text-center text-sm text-gray-700'>
+                잠시후 다시 시도해주세요 🥲
+              </span>
+            ),
+        },
+        {
+          position: 'bottom-center',
+          style: {
+            backgroundImage:
+              'linear-gradient(rgba(255, 255, 255), rgba(255, 255, 255)), linear-gradient(to right, #da76a3, #e10b39)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'content-box, border-box',
+            padding: '3px',
+            minWidth: '0.5rem',
+            boxShadow: '3.0px 5.0px 5.0px hsl(0deg 0% 0% / 0.1)',
+          },
+          success: {
+            icon: '',
+          },
+        }
+      );
+    } else {
+      toast.promise(
+        axios.get('').then((res) => {
+          return res;
+        }),
+        {
+          loading: (
+            <span className='pb-[2px] pt-[4px] text-center text-sm text-gray-700'>
+              적용중 ⛷️
+            </span>
+          ),
+          success: (
+            <span className='center pb-[2px] pt-[4px] text-center text-sm text-gray-700'>
+              {resort.resortName} 즐겨찾기
+              <span className=' text-[#1e40af]'> 추가완료</span>
+            </span>
+          ),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          error: (err: any) =>
+            err?.response?.data?.msg ?? (
+              <span className='pb-[2px] pt-[4px] text-center text-sm text-gray-700'>
+                잠시후 다시 시도해주세요 🥲
+              </span>
+            ),
+        },
+        {
+          position: 'bottom-center',
+          style: {
+            backgroundImage:
+              'linear-gradient(rgba(255, 255, 255), rgba(255, 255, 255)), linear-gradient(to right, #0ea5e9, #1e40af)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'content-box, border-box',
+            padding: '3px',
+            minWidth: '0.5rem',
+            boxShadow: '3.0px 5.0px 5.0px hsl(0deg 0% 0% / 0.1)',
+          },
+          success: {
+            icon: '',
+          },
+        }
+      );
+    }
     setIsFav(!isFav);
   };
 
