@@ -84,9 +84,7 @@ export default function SignIn() {
             <div className='pt-16 pb-12 md:pt-40'>
               <div className='mx-auto max-w-3xl pb-12 text-center md:pb-20'>
                 <h1 className='h2'>로그인 / 회원가입</h1>
-                <h5 className='mt-3'>
-                  홈페이지용 비밀번호 설정은 큐찾사 앱에서 가능합니다.
-                </h5>
+                <h5 className='mt-3'>회원가입 기능 개발중입니다.</h5>
               </div>
 
               <div className='mx-auto max-w-md'>
@@ -135,12 +133,9 @@ export default function SignIn() {
                         required
                       />
 
-                      <div className='h6 my-3 text-center text-gray-600 '>
+                      {/* <div className='h6 my-3 text-center text-gray-600 '>
                         <span className='text-green-700'>👉 </span>
-                        비밀번호는{' '}
-                        <span className='text-green-700'>큐찾사 앱</span>에서
-                        설정할 수 있습니다.
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
@@ -209,13 +204,7 @@ export default function SignIn() {
                 {/* 비밀번호 모를경우 */}
                 <div className='h6 my-3 text-center text-gray-600 '>
                   비밀번호를 모르실 경우{' '}
-                  <button
-                    onClick={() =>
-                      alert(
-                        '큐찾사앱에서 로그인/회원가입후\n1.마이페이지\n2.닉네임클릭\n3.내정보관리\n로 들어가시면 비밀번호를 설정할 수 있습니다.'
-                      )
-                    }
-                  >
+                  <button onClick={() => alert('기능 개발중입니다.')}>
                     <span className='underline decoration-2 underline-offset-4 hover:text-green-700'>
                       앱에서 재설정
                     </span>
@@ -240,11 +229,7 @@ export default function SignIn() {
                   <div className='w-full px-3'>
                     <button
                       className='btn relative flex w-full items-center rounded-md bg-gray-400 px-0 text-white  hover:bg-gray-500'
-                      onClick={() =>
-                        alert(
-                          '해당 기능은 개발중입니다 😀\n큐찾사 회원가입 후 비밀번호 설정해주시기 바랍니다.'
-                        )
-                      }
+                      onClick={() => alert('해당 기능은 개발중입니다 😀')}
                     >
                       <span className='flex-auto py-3'>
                         실명인증으로 로그인
@@ -256,13 +241,7 @@ export default function SignIn() {
                 {/* 회원가입 LINK */}
                 <div className='h6 mt-3 text-center text-gray-600'>
                   회원이 아니신가요?{' '}
-                  <button
-                    onClick={() =>
-                      alert(
-                        '해당 기능은 개발중입니다 😀\n큐찾사앱에서 회원가입이 가능합니다.'
-                      )
-                    }
-                  >
+                  <button onClick={() => alert('해당 기능은 개발중입니다 😀')}>
                     <span className='text-gray-600 underline decoration-2 underline-offset-4 transition duration-150 ease-in-out hover:text-green-600 '>
                       회원가입하기
                     </span>

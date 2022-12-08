@@ -1,0 +1,17 @@
+# service는 실행시킬 컨테이너들을 의미함
+services:
+  # 컨테이너명
+  nextServer:
+    # 빌드할 dockerfile경로
+    build: .
+    # 이미지이름
+    image: next_server
+    # 컨테이너 이름
+    container_name: nextServer
+    # -p 옵션
+    ports:
+      - 3000:3000
+    # -v 옵션
+    volumes:
+      - ./:/usr/src/app/.
+version: '3'
